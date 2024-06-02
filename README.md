@@ -4,16 +4,18 @@ Welcome to the Twitter Trends Scraper project! This project helps you scrape the
 
 ## 📋 Table of Contents
 
-1. [About](#about)
-2. [Features](#features)
-3. [Problem Solved](#problem-solved)
-4. [Getting Started](#getting-started)
-5. [Folder Structure](#folder-structure)
-6. [Configuration](#configuration)
-7. [Usage](#usage)
-8. [Example Output](#example-output)
-9. [Contributing](#contributing)
-10. [License](#license)
+1. [About](#-about)
+2. [Features](#-features)
+3. [Problem Solved](#-problem-solved)
+4. [Getting Started](#-getting-started)
+   - [Prerequisites](#prerequisites)
+   - [Installation](#installation)
+5. [Folder Structure](#-folder-structure)
+6. [Configuration](#-configuration)
+7. [Usage](#-usage)
+8. [Example Output](#-example-output)
+9. [Contributing](#-contributing)
+10. [License](#-license)
 
 ## 📖 About
 
@@ -168,3 +170,4 @@ We welcome contributions! Here’s how you can help:
 ## 📜 License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
+
