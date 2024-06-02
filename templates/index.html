@@ -9,25 +9,118 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+      #spinner {
+        display: none;
+        margin-top: 20px;
+      }
+      #error {
+        display: none;
+        margin-top: 20px;
+        color: red;
+      }
+      .spinner-border {
+        animation: spinner-grow 1s linear infinite;
+      }
+      @keyframes spinner-grow {
+        0% {
+          transform: scale(0.5);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(0.5);
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="container mt-5">
       <div class="card">
         <div class="card-body">
           <h1 class="card-title">Twitter Trends Scraper</h1>
-          <button id="runScriptBtn" class="btn btn-primary">
+          <p>
+            Click the button below to fetch the top 5 trending topics from
+            Twitter. Please wait while the script runs.
+          </p>
+          <button
+            id="runScriptBtn"
+            class="btn btn-primary"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="This button will run the script to fetch trending topics."
+          >
             Click here to run the script
           </button>
+          <div id="spinner" class="spinner-border text-primary mt-3"></div>
+          <div id="error" class="alert alert-danger mt-3">
+            An error occurred while fetching the trends. Please try again.
+          </div>
           <div id="results" class="mt-4"></div>
         </div>
       </div>
     </div>
 
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="errorModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="errorModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="errorModalLabel">Error</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            An error occurred while fetching the trends. Please try again.
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script>
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+
       async function runScript() {
-        const response = await fetch("/run_script", { method: "POST" });
-        const data = await response.text();
-        document.getElementById("results").innerHTML = data;
+        document.getElementById("spinner").style.display = "block";
+        document.getElementById("error").style.display = "none";
+        document.getElementById("results").innerHTML = "";
+        try {
+          const response = await fetch("/run_script", { method: "POST" });
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          const data = await response.text();
+          document.getElementById("results").innerHTML = data;
+        } catch (error) {
+          $("#errorModal").modal("show");
+        } finally {
+          document.getElementById("spinner").style.display = "none";
+        }
       }
 
       document
