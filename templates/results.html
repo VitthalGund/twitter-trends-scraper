@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Twitter Trends Results</title>
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title">
+            These are the most happening topics as on {{ record.datetime }}
+          </h1>
+          <ul class="list-group">
+            <li class="list-group-item">{{ record.trend1 }}</li>
+            <li class="list-group-item">{{ record.trend2 }}</li>
+            <li class="list-group-item">{{ record.trend3 }}</li>
+            <li class="list-group-item">{{ record.trend4 }}</li>
+            <li class="list-group-item">{{ record.trend5 }}</li>
+          </ul>
+          <p class="mt-3">
+            The IP address used for this query was {{ record.ip_address }}.
+          </p>
+          <h2 class="mt-4">JSON Extract:</h2>
+          <pre>{{ record | tojson }}</pre>
+          <button
+            class="btn btn-secondary mt-3"
+            onclick="window.location.href='/'"
+          >
+            Click here to run the query again
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
