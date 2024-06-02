@@ -46,7 +46,7 @@ Follow these steps to get the project up and running on your local machine:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/twitter-trends-scraper.git
+   git clone https://github.com/VitthalGund/twitter-trends-scraper.git
    cd twitter-trends-scraper
    ```
 
@@ -138,7 +138,7 @@ PROXYMESH_URL=http://your_proxymesh_url
 
 4. **View the results** on the web page. The page will display the trending topics, the IP address used, and a JSON extract of the record.
 
-### Example Output
+## 📄 Example Output
 
 ```json
 [
@@ -168,4 +168,3 @@ We welcome contributions! Here’s how you can help:
 ## 📜 License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
-
