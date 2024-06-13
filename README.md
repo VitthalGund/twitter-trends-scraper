@@ -114,16 +114,6 @@ twitter-trends-scraper/
 └── venv/
 ```
 
-## ⚙️ Configuration
-
-Ensure your `.env` file is correctly configured with the required environment variables:
-
-```env
-MONGO_URI=mongodb://localhost:27017
-TWITTER_USERNAME=your_twitter_username
-TWITTER_PASSWORD=your_twitter_password
-PROXYMESH_URL=http://your_proxymesh_url
-```
 
 ## 🎮 Usage
 
